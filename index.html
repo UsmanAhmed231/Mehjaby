@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mehjaby ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:linear-gradient(135deg,#ffb3d9,#ffe6f2);overflow:hidden}
+#hearts{position:fixed;inset:0;pointer-events:none}.heart{position:absolute;font-size:24px;animation:f 8s linear infinite}
+@keyframes f{from{transform:translateY(110vh)}to{transform:translateY(-20vh);opacity:0}}
+.wrap{display:flex;justify-content:center;align-items:center;height:100vh;padding:20px}
+.card{background:#fff;padding:35px;border-radius:22px;max-width:700px;width:100%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+h1{color:#ff2d75}p{font-size:20px;line-height:1.6;color:#444}
+button{padding:14px 28px;margin:8px;border:none;border-radius:10px;font-size:18px;cursor:pointer}
+.ok{background:#28a745;color:#fff}.no{background:#ff4d4d;color:#fff;position:absolute}
+</style></head><body>
+<div id="hearts"></div><div class="wrap"><div class="card" id="app"></div></div>
+<script>
+for(let i=0;i<70;i++){let h=document.createElement('div');h.className='heart';h.innerHTML=['❤️','💖','💕'][i%3];h.style.left=Math.random()*100+'vw';h.style.animationDuration=(4+Math.random()*6)+'s';h.style.animationDelay=Math.random()*6+'s';document.getElementById('hearts').appendChild(h);}
+const qs=[
+["Hi Mehjaby ❤️","I made something special just for you.","Start ❤️"],
+["Question 1 😄","Do you think I'm cute?","YES 😍","Absolutely 😂"],
+["Question 2 🥰","Who is your favourite person?","Usman ❤️","Still Usman 😜"],
+["Question 3 💕","How much do you love me?","A LOT ❤️","Infinity ♾️"],
+["Question 4 ☕","Will you go for coffee with me forever?","YES ☕"],
+["Question 5 🌍","Can we travel the world together?","YES ✈️"],
+["Question 6 😂","Will you laugh at my bad jokes?","Always 🤣"],
+["Question 7 🤗","Will you let me annoy you forever?","Maybe 😆"],
+["Question 8 ❤️","Ready for the final question?","I'm Ready 💍"]
+];
+let s=0;
+const app=document.getElementById('app');
+function render(){
+ if(s<qs.length){
+ let q=qs[s];
+ let html='<h1>'+q[0]+'</h1><p>'+q[1]+'</p>';
+ for(let i=2;i<q.length;i++) html+='<button class="ok" onclick="next()">'+q[i]+'</button>';
+ app.innerHTML=html;
+ }else{
+ app.innerHTML='<h1>💍 Will You Marry Me,<br>Mehjaby? ❤️</h1><p>Out of everyone in this world... I choose you.<br>Today. Tomorrow. Forever.</p><button class="ok" onclick="yes()">YES ❤️</button><button id="n" class="no">NO 🙈</button>';
+ let n=document.getElementById('n');
+ const t=["Are you sure? 🥺","Think again 😂","Please ❤️","No is broken 😜","Just press YES 💍","You can't catch me 🤭"];
+ let k=0;
+ function mv(){n.textContent=t[k++%t.length];n.style.left=Math.random()*(innerWidth-160)+'px';n.style.top=Math.random()*(innerHeight-80)+'px';}
+ n.onmouseover=mv;n.onclick=mv;
+ }
+}
+function next(){s++;render();}
+function yes(){
+ app.innerHTML='<h1>🎉 SHE SAID YES ❤️</h1><p>You just made me the happiest man alive.<br><br>I promise to love you, respect you, support you and make you laugh every day.<br><br><b>I Love You Mehjaby ❤️</b><br><br>Forever Yours,<br><b>Usman ❤️</b></p>';
+ for(let i=0;i<250;i++){let e=document.createElement('div');e.className='heart';e.innerHTML=['🎉','❤️','💖','✨','🎊'][Math.floor(Math.random()*5)];e.style.left=Math.random()*100+'vw';e.style.animationDuration=(2+Math.random()*3)+'s';document.getElementById('hearts').appendChild(e);}
+}
+render();
+</script></body></html>
